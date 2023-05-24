@@ -1,11 +1,11 @@
 import { Container, Heading, Stack } from "@chakra-ui/react";
 import React from "react";
-import { GasPriceCard } from "./components";
+import { BaseFeeCard, GasPriceCard } from "./components";
 
 export function App(): React.ReactElement {
   return <Container maxW='6xl' pt={8} pb={8}>
     <Heading as='h1' mb={8} bgClip='text' bgGradient='linear(to-r, #6687e9 10%, #b082d5 30%, #ed7ec4 50%)' size={['2xl', '3xl']}>ETH Gas Tracker</Heading>
-
+    <BaseFeeCard fee="47" />
     <Stack direction={['column', 'column', 'row']} spacing={8} flex={1} justifyContent='center'>
       <GasPriceCard
         label="⚡ Instant"
