@@ -57,3 +57,12 @@ After looking at existing gas trackers I put together some wireframes using Exca
 ![Mobile](https://drive.google.com/uc?id=1uL3-zTUzuPEN8dJeULZc5AOPY-LUS8iD)
 ![Tablet](https://drive.google.com/uc?id=1z3mDFD0vnel0F5tMbpNzp0MSI2ircfVW)
 ![Desktop](https://drive.google.com/uc?id=1jDq_GcUbotYONGzCydPxpauBQtm0A_zV)
+
+## Spanner in the works
+
+After implementing the api for gas price estimate and testing I realised that it gives a CORS error so it should be a server-side call. I have two options now:
+
+1. Whip up a basic Express.js server to make the call
+2. Switch to using Next.js and make the call on the server side
+
+I think the quickest option is to use Express.js so I will go with that, but as I mentioned in my initial thoughts, I would use Next.js if this were going to production.
