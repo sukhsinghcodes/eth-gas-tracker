@@ -4,7 +4,7 @@ A React app that tracks the price of gas for Ethereum
 
 ## Initial thoughts
 
-- **Tools**: As this is a small app I will use Vite to create the project. If this app were to be scaled up I would use Next.js.
+- **Tools**: As this is a small app I will use Vite to create the project. If this app were to be scaled up I would use Next.js even though I don't have much experience with it, I have been meaning to use it on a personal project.
 - **UX Design**: I've looked at various gas trackers such as Etherscan, Blocknative and gasprice.io. I will take inspiration of the layout from these sites.
 - **UI Design**: I have also surfed Dribbble for some inspiration on the design of the app.
 - **UI library**: Chakra UI - I haven't used this before, I'm more familiar with Material UI but Chaakra UI looks like a good lightweight alternative.
