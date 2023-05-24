@@ -49,3 +49,11 @@ i.e.
 ```text
 gasPrice = nextBaseFee + priorityFee
 ```
+
+## Design
+
+After looking at existing gas trackers I put together some wireframes using Excalidraw.
+
+![Mobile](https://drive.google.com/uc?id=1uL3-zTUzuPEN8dJeULZc5AOPY-LUS8iD)
+![Tablet](https://drive.google.com/uc?id=1z3mDFD0vnel0F5tMbpNzp0MSI2ircfVW)
+![Desktop](https://drive.google.com/uc?id=1jDq_GcUbotYONGzCydPxpauBQtm0A_zV)
