@@ -18,13 +18,13 @@ import axios from "axios";
 //   }
 // }
 
-type PriceType = {
+export type PriceType = {
   fast: number
   instant: number
   standard: number
 }
 
-type GasPriceResponse = {
+export type GasPriceResponse = {
   gasPrice: PriceType
   priorityFee: PriceType
   baseFee: number
