@@ -4,20 +4,23 @@ A React app that tracks the price of gas for Ethereum
 
 ## How to run
 
+1. Clone the repo
+
 ### Server
 
-1. `cd server`
+1. From project root `cd server`
 2. `npm install`
 3. `npm start`
 
 ### Client
 
-1. `cd client`
+1. From project root `cd client`
 2. `npm install`
 3. `npm run dev`
-4. Visit [http://localhost:5174/]
+4. Visit [http://localhost:5174]
 
 ## Notes
+
 ### Initial thoughts
 
 - **Tools**: As this is a small app I will use Vite to create the project. If this app were to be scaled up I would use Next.js even though I don't have much experience with it, I have been meaning to use it on a personal project.
@@ -86,5 +89,3 @@ I think the quickest option is to use Express.js so I will go with that, but as 
 ### Conclusion
 
 I'm happy with the result, I think it looks good and is easy to use. I would have liked to have added some more features such as a graph of the gas price over time, a breakdown of the gas price and a breakdown of the gas price for the next block. I would also have liked to have added some tests for the components and the api call. I would have also liked to have added some animations to make the app feel more responsive.
-
-
