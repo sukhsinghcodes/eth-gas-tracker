@@ -1,10 +1,10 @@
-import { Card, CardBody, CardHeader, Stat, StatNumber, StatHelpText, CardFooter, Text, Badge, BadgeProps } from "@chakra-ui/react";
+import { Card, CardBody, CardHeader, Stat, StatNumber, StatHelpText, CardFooter, Text, Badge, BadgeProps, Skeleton, SkeletonText } from "@chakra-ui/react";
 
 type GasPriceCardProps = {
   label: string
-  price: string
-  priorityFee: string
-  usdPrice: string
+  price: number | string | undefined
+  priorityFee: number | string | undefined
+  usdPrice: number | string | undefined
   color: string
   badgeColor: BadgeProps['colorScheme']
 }
@@ -16,14 +16,16 @@ export function GasPriceCard({ label, price, priorityFee, usdPrice, color, badge
       <CardBody>
         <Badge colorScheme={badgeColor} borderRadius={4} p={1}>{label}</Badge>
       </CardBody>
-      <CardHeader p={[0, 8]}>
-        <Stat>
-          <StatNumber textAlign='center' fontSize={['5xl', '6xl']} color={color}>{price}</StatNumber>
-          <StatHelpText textAlign='center' fontSize='xl'>${usdPrice}</StatHelpText>
-        </Stat>
+      <CardHeader p={[2, 8]}>
+        <SkeletonText noOfLines={2} isLoaded={price !== undefined || usdPrice !== undefined}>
+          <Stat>
+            <StatNumber textAlign='center' fontSize={['5xl', '6xl']} color={color}>{price}</StatNumber>
+            <StatHelpText textAlign='center' fontSize='xl'>${usdPrice}</StatHelpText>
+          </Stat>
+        </SkeletonText>
       </CardHeader >
       <CardFooter>
-        <Text size={'sm'} textAlign='center'>Priority fee: <strong>{priorityFee}</strong></Text>
+        <Text size={'sm'}>Priority fee: </Text>&nbsp;<Skeleton as='span' isLoaded={priorityFee !== undefined} minW='50px'><Text size={'sm'} as='b'>{priorityFee}</Text></Skeleton>
       </CardFooter>
     </Card >
   )
