@@ -2,7 +2,23 @@
 
 A React app that tracks the price of gas for Ethereum
 
-## Initial thoughts
+## How to run
+
+### Server
+
+1. `cd server`
+2. `npm install`
+3. `npm start`
+
+### Client
+
+1. `cd client`
+2. `npm install`
+3. `npm run dev`
+4. Visit [http://localhost:5174/]
+
+## Notes
+### Initial thoughts
 
 - **Tools**: As this is a small app I will use Vite to create the project. If this app were to be scaled up I would use Next.js even though I don't have much experience with it, I have been meaning to use it on a personal project.
 - **UX Design**: I've looked at various gas trackers such as Etherscan, Blocknative and gasprice.io. I will take inspiration of the layout from these sites.
@@ -13,9 +29,9 @@ A React app that tracks the price of gas for Ethereum
 - **Currency conversion**: As I want to display the gas price in USD I will be using the CoinGecko API to get the current price of ETH in USD. I will also need to convert the gas price from Gwei to ETH. This is a simple calculation of dividing the gas price by 1,000,000,000. If I were to scale this app up I would use a library such as Ethers.js to use the utility functons for converting between units, but also to turn this into a dApp and add all sorts of features.
 - **Testing**: I will be using Jest and React Testing Library for testing.
 
-## Data
+### Data
 
-### Example response
+#### Example response
 
 ```javascript
 {
@@ -50,7 +66,7 @@ i.e.
 gasPrice = nextBaseFee + priorityFee
 ```
 
-## Design
+### Design
 
 After looking at existing gas trackers I put together some wireframes using Excalidraw.
 
@@ -58,7 +74,7 @@ After looking at existing gas trackers I put together some wireframes using Exca
 ![Tablet](https://drive.google.com/uc?id=1z3mDFD0vnel0F5tMbpNzp0MSI2ircfVW)
 ![Desktop](https://drive.google.com/uc?id=1jDq_GcUbotYONGzCydPxpauBQtm0A_zV)
 
-## Spanner in the works
+### Spanner in the works
 
 After implementing the api for gas price estimate and testing I realised that it gives a CORS error so it should be a server-side call. I have two options now:
 
@@ -66,3 +82,9 @@ After implementing the api for gas price estimate and testing I realised that it
 2. Switch to using Next.js and make the call on the server side
 
 I think the quickest option is to use Express.js so I will go with that, but as I mentioned in my initial thoughts, I would use Next.js if this were going to production.
+
+### Conclusion
+
+I'm happy with the result, I think it looks good and is easy to use. I would have liked to have added some more features such as a graph of the gas price over time, a breakdown of the gas price and a breakdown of the gas price for the next block. I would also have liked to have added some tests for the components and the api call. I would have also liked to have added some animations to make the app feel more responsive.
+
+
