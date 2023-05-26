@@ -1,6 +1,6 @@
-import { Container, Heading, Stack, Text, useToast } from "@chakra-ui/react";
-import React, { useEffect } from "react";
-import { BaseFeeCard, GasPriceCard } from "./components";
+import { Container, HStack, Heading, Stack, Text, useToast } from "@chakra-ui/react";
+import React, { useCallback, useEffect } from "react";
+import { BaseFeeCard, Countdown, GasPriceCard } from "./components";
 import { useQuery } from "@tanstack/react-query";
 import { PriceType, getEthUsdPrice, getGasPriceEstimate } from "./api";
 import { gweiToUsd } from "./utils";
@@ -36,29 +36,39 @@ const gasPriceCardsProps = {
 export function App(): React.ReactElement {
   const toast = useToast()
 
-  const { data: gasPriceEstimates, isError } = useQuery(['gasPriceEstimates'], getGasPriceEstimate, {
-    refetchInterval: 30000,
-  })
-  const { data: ethUsd } = useQuery(['ethUsd'], getEthUsdPrice, {
-    refetchInterval: 30000,
-  })
+  const { data: gasPriceEstimates, isError: gasError, refetch: refetchGasPrices } = useQuery(['gasPriceEstimates'], getGasPriceEstimate)
+  const { data: ethUsd, isError: usdError, refetch: refetchUsdsPrices } = useQuery(['ethUsd'], getEthUsdPrice)
+
+  const refetch = useCallback(() => {
+    refetchGasPrices()
+    refetchUsdsPrices()
+  }, [refetchGasPrices, refetchUsdsPrices])
 
   useEffect(() => {
-    if (isError) {
+    if (gasError) {
       toast({
         description: "There was an error fetching gas price estimates.",
         status: 'error',
         duration: 5000,
       })
     }
-  }, [isError, toast])
 
-  console.log('gasPriceEstimates', gasPriceEstimates)
-  console.log('ethUsd', ethUsd?.ethereum.usd)
+    if (usdError) {
+      toast({
+        description: "There was an error fetching USD price of ETH.",
+        status: 'error',
+        duration: 5000,
+      })
+    }
+
+  }, [gasError, toast, usdError])
 
   return <Container maxW='6xl' pt={8} pb={8}>
     <Heading as='h1' mb={8} bgClip='text' bgGradient='linear(to-r, #6687e9 10%, #b082d5 30%, #ed7ec4 50%)' size={['2xl', '3xl']}>ETH Gas Tracker</Heading>
-    <BaseFeeCard fee={gasPriceEstimates?.nextBaseFee} />
+    <HStack justifyContent='space-between' mb={8}>
+      <BaseFeeCard fee={gasPriceEstimates?.nextBaseFee} />
+      <Countdown seconds={30} onComplete={refetch} />
+    </HStack>
     <Stack direction={['column', 'column', 'row']} spacing={8} flex={1} justifyContent='center'>
       {Object.entries(gasPriceCardsProps).map(([key, props]) => {
 
