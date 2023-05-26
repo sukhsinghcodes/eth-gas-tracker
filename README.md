@@ -89,3 +89,5 @@ I think the quickest option is to use Express.js so I will go with that, but as 
 ### Conclusion
 
 I'm happy with the result, I think it looks good and is easy to use. I would have liked to have added some more features such as a graph of the gas price over time, a breakdown of the gas price and a breakdown of the gas price for the next block. I would also have liked to have added some tests for the components and the api call. I would have also liked to have added some animations to make the app feel more responsive.
+
+One improvement I would've like to make is to cached the last results of the api call this way if any of the end points are down the app will still display the last results with a timestamp.
