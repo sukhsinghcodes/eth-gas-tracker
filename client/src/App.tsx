@@ -35,6 +35,7 @@ const gasPriceCardsProps = {
 
 export function App(): React.ReactElement {
   const toast = useToast()
+  const [timestamp, setTimestamp] = React.useState<Date | undefined>()
 
   const { data: gasPriceEstimates, isError: gasError, refetch: refetchGasPrices } = useQuery(['gasPriceEstimates'], getGasPriceEstimate)
   const { data: ethUsd, isError: usdError, refetch: refetchUsdsPrices } = useQuery(['ethUsd'], getEthUsdPrice)
@@ -42,6 +43,7 @@ export function App(): React.ReactElement {
   const refetch = useCallback(() => {
     refetchGasPrices()
     refetchUsdsPrices()
+    setTimestamp(new Date())
   }, [refetchGasPrices, refetchUsdsPrices])
 
   useEffect(() => {
@@ -86,7 +88,12 @@ export function App(): React.ReactElement {
         return (<GasPriceCard key={key} {...hydratedProps} />)
       })}
     </Stack>
+    <HStack justifyContent='space-between' mt={8}>
 
-    <Text mt={8} fontSize='sm' color='gray.500'>* All fee price units are in GWEI unless specified otherwise.</Text>
+      <Text fontSize='sm' color='gray.500'>* All fee price units are in GWEI unless specified otherwise.</Text>
+      {timestamp && <Text fontSize='sm' color='gray.500'>Prices last updated: <Text as='b'>{timestamp.toLocaleString()}</Text></Text>}
+
+    </HStack>
+
   </Container>;
 }
