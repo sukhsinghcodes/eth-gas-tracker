@@ -14,7 +14,7 @@ A React app that tracks the price of gas for Ethereum
 
 ### Client
 
-1. From project root `cd client`
+1. Open a new termial window and from project root `cd client`
 2. `npm install`
 3. `npm run dev`
 4. Visit [http://localhost:5174]
