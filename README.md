@@ -26,7 +26,7 @@ A React app that tracks the price of gas for Ethereum
 - **Tools**: As this is a small app I will use Vite to create the project. If this app were to be scaled up I would use Next.js even though I don't have much experience with it, I have been meaning to use it on a personal project.
 - **UX Design**: I've looked at various gas trackers such as Etherscan, Blocknative and gasprice.io. I will take inspiration of the layout from these sites.
 - **UI Design**: I have also surfed Dribbble for some inspiration on the design of the app.
-- **UI library**: Chakra UI - I haven't used this before, I'm more familiar with Material UI but Chaakra UI looks like a good lightweight alternative.
+- **UI library**: Chakra UI - I haven't used this before, I'm more familiar with Material UI but Chakra UI looks like a good lightweight alternative.
 - **Data**: I will be using the api provided here [https://api.ethgasstation.info/api/fee-estimate]
 - **Data fetching**: Because this is a simple client-side only app I will be using React Query with Axios, utilising React Query's refetch interval to update the data every 30 seconds. In a production app I would use WebSockets (Socket.IO) to update the UI in real time, fetch data on server side and cache for 30 seconds.
 - **Currency conversion**: As I want to display the gas price in USD I will be using the CoinGecko API to get the current price of ETH in USD. I will also need to convert the gas price from Gwei to ETH. This is a simple calculation of dividing the gas price by 1,000,000,000. If I were to scale this app up I would use a library such as Ethers.js to use the utility functons for converting between units, but also to turn this into a dApp and add all sorts of features.
@@ -90,4 +90,4 @@ I think the quickest option is to use Express.js so I will go with that, but as 
 
 I'm happy with the result, I think it looks good and is easy to use. I would have liked to have added some more features such as a graph of the gas price over time, a breakdown of the gas price and a breakdown of the gas price for the next block. I would also have liked to have added some tests for the components and the api call. I would have also liked to have added some animations to make the app feel more responsive.
 
-One improvement I would've like to make is to cached the last results of the api call this way if any of the end points are down the app will still display the last results with a timestamp.
+One improvement I would like to make is to cache the last results of the api call this way if any of the end points are down the app will still display the last fetched results with a timestamp.
